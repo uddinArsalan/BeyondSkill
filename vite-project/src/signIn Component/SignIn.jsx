@@ -124,10 +124,10 @@ const SignIn = () => {
   }
 
   return (
-    <div className=" bg-signInBG">
+    <div className=" bg-signInBG min-h-screen">
       <Nav />
       <div className="grid grid-cols-1 place-items-center grid-row-1">
-      <div className="flex flex-col justify-center items-center m-2 relative bg-white h-fit p-2">
+      <div className="flex flex-col justify-center items-center m-4 relative bg-white h-fit p-2">
         <div className="flex absolute top-0 left-0 right-0">
           <div style={styles1} className="bg-white font-semibold text-lg p-2 md:p-4 w-1/2 flex justify-center items-center cursor-pointer " onClick={() => {
             setSignIn(false)

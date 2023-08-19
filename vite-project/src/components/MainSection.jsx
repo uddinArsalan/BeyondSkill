@@ -1,5 +1,4 @@
 import React from "react";
-import main from "../logo/main.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import enterprise from '../logo/planning.png';
@@ -9,7 +8,7 @@ import learn from "../assets/undraw_flying_drone_re_sh64.svg"
 
 const MainSection = () => {
   return (
-    <div className="bg-bodyBg">
+    <div className="bg-bodyBg min-w-screen">
     <div className="grid lg:grid-cols-2 grid-cols-1 p-10 flex-wrap place-items-center gap-16 align-center  lg:h-screen">
       <div className="flex flex-col">
         {/* <div className="font-semibold  tracking-wider text-5xl mb-6">Trust an IDC leader to overcome digital talent gaps.</div> */}
