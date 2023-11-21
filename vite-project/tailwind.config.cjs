@@ -13,7 +13,7 @@ module.exports = {
         signInBG : "#F6F6F6"
       },
       backgroundImage: {
-        'contact': "url('../logo/pathum-danthanarayana-kBY8uhuvnT8-unsplash.jpg')",
+        'contact': "url('./src/logo/contact.jpg')",
       },
     },
   },

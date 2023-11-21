@@ -19,7 +19,7 @@ const CoursesData = [
     },
     {
         id: 3,
-        image : "https://newsonair.com/wp-content/uploads/2022/10/WhatsApp-Image-2022-10-13-at-18.13.09.jpeg",
+        image : "https://www.springboard.com/blog/wp-content/uploads/2021/02/how-to-learn-cybersecurity.png",
         title : "Cybersecurity Mastery: From Fundamentals to Advanced Techniques",
         instructor : "Jose Portilla",
         display : "visible",
@@ -35,38 +35,42 @@ const CoursesData = [
         value : 4.6,
         description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
     },
-    // {
-    //     id: 5,
-    //     image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJihXRdeOIuTGYKEAXRcDiNByvf3YJAad1mg&usqp=CAU",
-    //     title : "Mastering Blockchain: From Concepts to Implementations",
-    //     instructor : "Jonas Schmedtmann",
-    //     display : "hidden",
-    //     description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
-    // },
-    // {
-    //     id: 6,
-    //     image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJihXRdeOIuTGYKEAXRcDiNByvf3YJAad1mg&usqp=CAU",
-    //     title : "Mastering Blockchain: From Concepts to Implementations",
-    //     instructor : "Jonas Schmedtmann",
-    //     display : "hidden",
-    //     description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
-    // },
-    // {
-    //     id: 7,
-    //     image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJihXRdeOIuTGYKEAXRcDiNByvf3YJAad1mg&usqp=CAU",
-    //     title : "Mastering Blockchain: From Concepts to Implementations",
-    //     instructor : "Jonas Schmedtmann",
-    //     display : "hidden",
-    //     description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
-    // },
-    // {
-    //     id: 8,
-    //     image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJihXRdeOIuTGYKEAXRcDiNByvf3YJAad1mg&usqp=CAU",
-    //     title : "Mastering Blockchain: From Concepts to Implementations",
-    //     instructor : "Jonas Schmedtmann",
-    //     display : "hidden",
-    //     description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
-    // },
+    {
+        id: 5,
+        image : "https://cdn.pixabay.com/photo/2019/03/28/16/09/conference-4087444_1280.jpg",
+        title : "Mastering Blockchain: From Concepts to Implementations",
+        instructor : "Jonas Schmedtmann",
+        display : "visible",
+        value : 4.4,
+        description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
+    },
+    {
+        id: 6,
+        image : "https://media.istockphoto.com/id/1034363382/photo/coins-of-various-cryptocurrencies.jpg?s=612x612&w=0&k=20&c=-ia1tKJeGeoJ7bWN8i6Udzq92MZ9T9vi--OFT6fVsiA=",
+        title : "Mastering Blockchain: From Concepts to Implementations",
+        instructor : "Jonas Schmedtmann",
+        display : "visible",
+        value : 4.7,
+        description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
+    },
+    {
+        id: 7,
+        image : "https://picsum.photos/id/27/192",
+        title : "Mastering Blockchain: From Concepts to Implementations",
+        instructor : "Jonas Schmedtmann",
+        display : "visible",
+        value : 4.67,
+        description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
+    },
+    {
+        id: 8,
+        image : "https://picsum.photos/id/15/192",
+        title : "Mastering Blockchain: From Concepts to Implementations",
+        instructor : "Jonas Schmedtmann",
+        display : "visible",
+        value : 4.03,
+        description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
+    },
 ]
 
 export default CoursesData

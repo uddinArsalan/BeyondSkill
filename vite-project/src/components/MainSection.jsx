@@ -21,8 +21,8 @@ const MainSection = () => {
         BeyondSkill is proud of the many achievements of our students and instructors. Our aim is to provide the highest quality education and resources to help learners succeed in their personal and professional endeavors.
         </div>
         <div className="flex items-center space-x-6">   
-        <div className="bg-blue text-white p-4 w-fit rounded-md cursor-pointer flex justify-evenly items-center">Download report <FontAwesomeIcon icon={faArrowRight} /></div>
-        <div className="text-blue md:text-base text-sm underline cursor-pointer flex justify-evenly items-center">Explore our solution<FontAwesomeIcon icon={faArrowRight} /></div>
+        <div className="bg-blue text-white p-4 w-fit rounded-md cursor-pointer flex justify-evenly items-center"><span className="mr-2">Download report </span><FontAwesomeIcon icon={faArrowRight} /></div>
+        <div className="text-blue md:text-base text-sm underline cursor-pointer flex justify-evenly items-center"><span className="mr-2">Explore our solution</span><FontAwesomeIcon icon={faArrowRight}/></div>
       </div>
         </div>
         <div className="flex justify-center items-center lg:mt-6">
