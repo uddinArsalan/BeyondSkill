@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
+import { useMediaQuery } from "react-responsive";
+import CoursesData from "./CoursesData";
 
-const CourseSection = ({ img, title,name,value,id,currentId}) => {
+const CourseSection = ({ startIndex, currentId,initialCards }) => {
+  const isTablet = useMediaQuery({ query: "(min-width: 1024px)" });
+  const isPhone = useMediaQuery({ query: "min-width : 768px" });
+  let visibleCourses = CoursesData.slice(startIndex, startIndex + initialCards);
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+  // visibleCourses = !isTablet ? CoursesData : visibleCourses
+  // console.log("isTablet " + isTablet)
+  // console.log("isPhone " + isPhone)
+  // console.log(isPhone);
   return (
-    <div className={`w-64 flex flex-col justify-center items-center p-4 rounded-md border-gray-200 relative border-2 cursor-pointer transition-transform ${currentId == id ? "md:scale-110 bg-gray-50" : ""}`}>
-      <div className="text-gray-500 text-sm font-bold absolute top-1 right-1">{id}</div>
-      <div className="font-bold text-xl">{title}</div>
-      <img src={img} alt="" className="w-48 h-48 object-contain" />
-      {/* <div className='text-gray-400'>{description}</div> */}
-      <div className="flex flex-col ">
-      <div className="text-sm text-gray-400">{name}</div>
-      <div className="flex justify-evenly items-center">
-        <span className="text-gray-600 mr-2 font-semibold">{value}</span>
-        <ReactStars
-          count={5}
-          onChange={ratingChanged}
-          size={24}
-          value={value}
-          activeColor="#ffd700"
-          isHalf={true}
-        />
-        <span className="ml-2 text-gray-400">256,923</span>
-      </div>
-      </div>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+      {visibleCourses.map(({ id, image, title, instructor, value }) => (
+        <div className="p-4 rounded-md border border-gray-200" key={id}>
+          <div className="text-gray-500 text-xs font-bold mb-2">{id}</div>
+          <div className="font-semibold text-lg mb-2">{title}</div>
+          <img src={image} alt="" className="w-full h-48 object-cover mb-2" />
+          <div className="text-sm text-gray-400 mb-1">{instructor}</div>
+          <div className="flex items-center text-sm text-gray-600">
+            <ReactStars
+              count={5}
+              onChange={ratingChanged}
+              size={18}
+              value={value}
+              activeColor="#ffd700"
+              isHalf={true}
+            />
+            <span className="ml-1">{value}</span>
+            <span className="ml-2 text-gray-400">256,923</span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

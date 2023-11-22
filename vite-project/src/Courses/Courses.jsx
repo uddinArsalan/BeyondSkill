@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import course from "../assets/undraw_reminder_re_fe15.svg";
 import Menu from "../components/Menu";
 import CourseSection from "./CourseSection";
-import CoursesData from "./CoursesData";
+import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowCircleRight,
@@ -14,9 +14,22 @@ import { useEffect, useState } from "react";
 // offers, such as business, technology, creative writing, or
 // personal development.
 function Courses({ menu, setMenu }) {
+  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isPhone = useMediaQuery({ query: "(max-width: 768px)" });
+  const [smallerScreen, setSmallerScreen] = useState(false);
+  const [initialCards,setInitialCards] = useState(3)
+  const [smallestScreen, setSmallestScreen] = useState(false);
+  useEffect(() => {
+    if (isTablet) setSmallerScreen(true);
+    if (isPhone) setSmallestScreen(true);
+  }, [isTablet, isPhone]);
+  useEffect(() => {
+    if (smallerScreen) setInitialCards(2);
+    if (smallestScreen) setInitialCards(1);   
+    console.log(smallerScreen, smallestScreen);
+  },[smallerScreen,smallestScreen])
   const [startIndex, setStartIndex] = useState(0);
   const [currentId, setCurrentId] = useState(2);
-
   useEffect(() => {
     if (currentId - startIndex > 2) {
       setStartIndex((prevInd) => prevInd + 1);
@@ -36,7 +49,6 @@ function Courses({ menu, setMenu }) {
       setCurrentId((prevId) => prevId - 1);
     }
   };
-  const visibleCourses = CoursesData.slice(startIndex, startIndex + 3);
 
   return (
     <div>
@@ -45,11 +57,11 @@ function Courses({ menu, setMenu }) {
         <Menu />
       ) : (
         <>
-          <div className="flex flex-wrap md:flex-nowrap justify-center items-center">
-            <div className="md:block w-full flex justify-center items-center md:m-6 mt-6">
-              <img src={course} alt="" className="md:w-96 w-3/4" />
+          <div className="flex flex-wrap md:flex-nowrap justify-center p-6 gap-6">
+            <div className="md:block w-full flex items-center justify-center">
+              <img src={course} alt="" className="md:w-96 w-4/5" />
             </div>
-            <div className="flex flex-col m-6">
+            <div className="flex flex-col">
               <div className="text-2xl font-semibold">
                 Take Your Skills to the Next Level with Beyond Skill Courses...
               </div>
@@ -84,8 +96,8 @@ function Courses({ menu, setMenu }) {
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-center items-center m-6 ">
-            <div className="text-5xl font-bold mb-3 ">Our Courses</div>
+          <div className="flex flex-col gap-8 justify-center items-center m-6 ">
+            <div className="text-5xl font-bold">Our Courses</div>
             <div className="font-semibold text-gray-600 text-center">
               A list of the different types of courses that Beyondskill offers,
               such as business, technology, creative writing, or personal
@@ -97,26 +109,9 @@ function Courses({ menu, setMenu }) {
                 className="text-3xl cursor-pointer"
                 onClick={handlePrevious}
               />
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-16 place-items-center m-8 md:m-16">
-                {visibleCourses.length > 0 ? (
-                  visibleCourses.map((data) => (
-                    <CourseSection
-                      id={data.id}
-                      key={data.id}
-                      currentId={currentId}
-                      img={data.image}
-                      title={data.title}
-                      description={data.description}
-                      name={data.instructor}
-                      value={data.value}
-                      display={data.display}
-                    />
-                  ))
-                ) : (
-                  <p>Loading...</p> // Placeholder until visibleCourses is populated
-                )}
+              <div className="m-6">
+                <CourseSection startIndex={startIndex} currentId={currentId} initialCards={initialCards}/>
               </div>
-
               <FontAwesomeIcon
                 icon={faArrowCircleRight}
                 className="text-3xl cursor-pointer"
