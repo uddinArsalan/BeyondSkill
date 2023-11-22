@@ -5,11 +5,22 @@ import enterprise from '../logo/planning.png';
 import govt from '../logo/government.png'
 import ind from '../logo/vulnerable-individuals.png'
 import learn from "../assets/undraw_flying_drone_re_sh64.svg" 
+import { Link } from "react-router-dom";
 
 const MainSection = () => {
+  const generatePDF = () => {
+    // Create a jsPDF instance
+    const doc = new window.jspdf.jsPDF();
+
+    // Add content to the PDF
+    doc.text('Hello, this is a basic PDF report!', 10, 10);
+
+    // Save the PDF with a specific name
+    doc.save('report.pdf');
+  };
   return (
     <div className="bg-bodyBg min-w-screen">
-    <div className="grid lg:grid-cols-2 grid-cols-1 p-10 flex-wrap place-items-center gap-16 align-center  lg:h-screen">
+    <div className="grid lg:grid-cols-2 grid-cols-1 p-10 flex-wrap place-items-center gap-16 align-center lg:h-screen mt-0">
       <div className="flex flex-col">
         {/* <div className="font-semibold  tracking-wider text-5xl mb-6">Trust an IDC leader to overcome digital talent gaps.</div> */}
         {/* <div className="text-xl mb-6">
@@ -21,8 +32,8 @@ const MainSection = () => {
         BeyondSkill is proud of the many achievements of our students and instructors. Our aim is to provide the highest quality education and resources to help learners succeed in their personal and professional endeavors.
         </div>
         <div className="flex items-center space-x-6">   
-        <div className="bg-blue text-white p-4 w-fit rounded-md cursor-pointer flex justify-evenly items-center"><span className="mr-2">Download report </span><FontAwesomeIcon icon={faArrowRight} /></div>
-        <div className="text-blue md:text-base text-sm underline cursor-pointer flex justify-evenly items-center"><span className="mr-2">Explore our solution</span><FontAwesomeIcon icon={faArrowRight}/></div>
+        <div className="bg-blue text-white md:p-4 p-3 w-fit rounded-md cursor-pointer" onClick={generatePDF}><span className="mr-2">Download report </span><FontAwesomeIcon icon={faArrowRight} /></div>
+        <Link to="course"><div className="text-blue text-base hover:underline cursor-pointer"><span className="mr-2">Explore our solution</span><FontAwesomeIcon icon={faArrowRight}/></div></Link>
       </div>
         </div>
         <div className="flex justify-center items-center lg:mt-6">
@@ -30,11 +41,11 @@ const MainSection = () => {
         {/* <img src={main} alt="" className=" rounded-lg"/> */}
         </div>
     </div>
-    <div className="bg-darkBlue p-10 md:rounded-bl-full">
-      <div className="text-skyBlue">Individual Learners</div>
+    <div className="bg-darkBlue p-10 md:rounded-bl-[140px]">
+      <div className="text-skyBlue text-base">Individual Learners</div>
       <div className="flex justify-between flex-wrap">
       <div className="text-white font-semibold text-xl">Accelerate your career with job-ready digital skills.</div>
-      <div className="border-2 border-white rounded-md text-white p-3 flex justify-between md:mt-0 mt-4 cursor-pointer"><div className="mr-3">Explore Programs </div><span><FontAwesomeIcon icon={faArrowRight} /></span></div>
+      <div className="border-2 border-white hover:bg-white hover:text-black hover:font-bold transition-colors rounded-md text-white p-3 flex justify-between md:mt-0 mt-4 cursor-pointer"><div className="mr-3">Explore Programs </div><span><FontAwesomeIcon icon={faArrowRight} /></span></div>
       </div>
     </div>
     <div className="flex flex-col p-10">

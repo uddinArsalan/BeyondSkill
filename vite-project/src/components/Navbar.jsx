@@ -49,24 +49,24 @@ const Navbar = ({ menu,setMenu }) => {
           }}/>
       </div>
       <div className="hidden lg:flex justify-around w-3/5 items-center">
-        <div className="font-semibold hover:text-blue cursor-pointer" >
-          For Enterprises
-          <FontAwesomeIcon icon={faChevronDown} className='ml-1'/>
-        </div>
-        <Link to="/course"><div className="font-semibold hover:text-blue cursor-pointer">
-          Our Courses
+        <Link to="/"><div className="font-semibold hover:text-blue cursor-pointer" >
+          Home
           <FontAwesomeIcon icon={faChevronDown} className='ml-1'/>
         </div></Link>
-        <div className="font-semibold hover:text-blue cursor-pointer" >
-          For Individuals
+        <Link to="/course"><div className="font-semibold hover:text-blue cursor-pointer">
+          Courses
+          <FontAwesomeIcon icon={faChevronDown} className='ml-1'/>
+        </div></Link>
+        <a href="#about-us"><div className="font-semibold hover:text-blue cursor-pointer" >
+          About Us
           <FontAwesomeIcon icon={faChevronDown} className='ml-1 '/>
-        </div>
+        </div></a>
         <Link to = '/signIn'><div className="font-semibold">
           Sign In
           {/* <FontAwesomeIcon icon={faChevronDown} className='cursor-pointer ml-1'/> */}
         </div>
         </Link>
-        <Link to="/start" ><button className="p-1 w-36 text-blue border-blue text-base font-bold border-2 rounded-md hover:bg-blue hover:text-white">
+        <Link to="/start" ><button className="p-1 w-36 text-blue transition-colors border-blue text-base font-bold border-2 rounded-md hover:bg-blue hover:text-white">
           Get Started
         </button>
         </Link>
