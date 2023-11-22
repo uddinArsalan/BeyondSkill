@@ -18,7 +18,7 @@ const Menu = () => {
         </div>
         <hr />
         <div className="flex justify-between items-center p-6 hover:text-blue cursor-pointer">
-            <Link to="/course" ><div className="text-xl font-semibold">For Individuals</div></Link>
+            <Link to="/course" ><div className="text-xl font-semibold">Our Courses</div></Link>
             <div><FontAwesomeIcon icon={faChevronRight} /></div>
             </div>
         </div>

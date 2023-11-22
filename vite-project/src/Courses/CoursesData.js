@@ -55,7 +55,7 @@ const CoursesData = [
     },
     {
         id: 7,
-        image : "https://picsum.photos/id/27/192",
+        image : "https://picsum.photos/id/27/192/120",
         title : "Mastering Blockchain: From Concepts to Implementations",
         instructor : "Jonas Schmedtmann",
         display : "visible",
@@ -64,7 +64,7 @@ const CoursesData = [
     },
     {
         id: 8,
-        image : "https://picsum.photos/id/15/192",
+        image : "https://picsum.photos/id/15/192/120",
         title : "Mastering Blockchain: From Concepts to Implementations",
         instructor : "Jonas Schmedtmann",
         display : "visible",

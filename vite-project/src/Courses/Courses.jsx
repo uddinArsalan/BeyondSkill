@@ -9,37 +9,34 @@ import {
   faArrowCircleRight,
   faArrowCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 //  A list of the different types of courses that Beyondskill
 // offers, such as business, technology, creative writing, or
 // personal development.
 function Courses({ menu, setMenu }) {
-
-  const [currentId,setCurrentId] = useState(2)
-  const [ startIndex,setStartIndex] = useState(0)
+  const [startIndex, setStartIndex] = useState(0);
+  const [currentId, setCurrentId] = useState(2);
 
   useEffect(() => {
-    if((currentId - startIndex) > 2){
-      setStartIndex(prevInd => prevInd + 1)
-    }
-    
-    if((currentId - startIndex) < 2 && startIndex > 0){
-      setStartIndex(prevId => prevId - 1)
+    if (currentId - startIndex > 2) {
+      setStartIndex((prevInd) => prevInd + 1);
     }
 
-    if(currentId > 7){
-      setStartIndex(0)
-      setCurrentId(2)
+    if (currentId - startIndex < 2 && startIndex > 0) {
+      setStartIndex((prevId) => prevId - 1);
     }
-    
-  },[currentId,startIndex])
+
+    if (currentId > 7) {
+      setStartIndex(0);
+      setCurrentId(2);
+    }
+  }, [currentId, startIndex]);
   const handlePrevious = () => {
-    if((currentId - startIndex) == 2){
-      setCurrentId(prevId => prevId - 1)
+    if (currentId - startIndex == 2) {
+      setCurrentId((prevId) => prevId - 1);
     }
-  }
-  const visibleCourses = CoursesData.slice(startIndex, currentId + 1);
-  
+  };
+  const visibleCourses = CoursesData.slice(startIndex, startIndex + 3);
 
   return (
     <div>
@@ -50,7 +47,7 @@ function Courses({ menu, setMenu }) {
         <>
           <div className="flex flex-wrap md:flex-nowrap justify-center items-center">
             <div className="md:block w-full flex justify-center items-center md:m-6 mt-6">
-            <img src={course} alt="" className="md:w-96 w-3/4" />
+              <img src={course} alt="" className="md:w-96 w-3/4" />
             </div>
             <div className="flex flex-col m-6">
               <div className="text-2xl font-semibold">
@@ -91,7 +88,7 @@ function Courses({ menu, setMenu }) {
           </div>
           <div className="flex flex-col justify-center items-center m-6 ">
             <div className="text-5xl font-bold mb-3 ">Our Courses</div>
-            <div className="font-semibold text-gray-600">
+            <div className="font-semibold text-gray-600 text-center">
               A list of the different types of courses that Beyondskill offers,
               such as business, technology, creative writing, or personal
               development.
@@ -102,9 +99,10 @@ function Courses({ menu, setMenu }) {
                 className="text-3xl cursor-pointer"
                 onClick={handlePrevious}
               />
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-16 place-items-center m-16">
-                {visibleCourses.map(data => {
-                  return (
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-16 place-items-center m-8 md:m-16">
+          
+                {visibleCourses.length > 0 ? (
+                  visibleCourses.map((data) => (
                     <CourseSection
                       id={data.id}
                       key={data.id}
@@ -113,17 +111,19 @@ function Courses({ menu, setMenu }) {
                       title={data.title}
                       description={data.description}
                       name={data.instructor}
-                      value = {data.value}
-                      display ={data.display}
+                      value={data.value}
+                      display={data.display}
                     />
-                  )
-                })}      
+                  ))
+                ) : (
+                  <p>Loading...</p> // Placeholder until visibleCourses is populated
+                )}
               </div>
+
               <FontAwesomeIcon
                 icon={faArrowCircleRight}
                 className="text-3xl cursor-pointer"
-                onClick={() => setCurrentId(prevId => prevId 
-                  + 1)}
+                onClick={() => setCurrentId((prevId) => prevId + 1)}
               />
             </div>
           </div>
