@@ -14,10 +14,11 @@ const CourseSection = ({ startIndex, currentId,initialCards }) => {
   // console.log("isTablet " + isTablet)
   // console.log("isPhone " + isPhone)
   // console.log(isPhone);
+  //${currentId == id ? "lg:scale-110 " : ""}
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
       {visibleCourses.map(({ id, image, title, instructor, value }) => (
-        <div className="p-4 rounded-md border border-gray-200" key={id}>
+        <div className={`p-4 rounded-md border border-gray-200`} key={id}>
           <div className="text-gray-500 text-xs font-bold mb-2">{id}</div>
           <div className="font-semibold text-lg mb-2">{title}</div>
           <img src={image} alt="" className="w-full h-48 object-cover mb-2" />

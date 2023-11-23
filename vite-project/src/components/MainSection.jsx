@@ -42,7 +42,7 @@ const MainSection = () => {
           </div>
           <div className="flex items-center space-x-6">
             <div
-              className="bg-blue text-white md:p-4 p-3 flex w-fit rounded-md cursor-pointer"
+              className="bg-blue text-white flex items-center md:p-4 p-3 w-fit rounded-md cursor-pointer"
               onClick={generatePDF}
             >
               <span className="mr-2">Download report </span>
@@ -52,7 +52,7 @@ const MainSection = () => {
               />
             </div>
             <Link to="course">
-              <div className="text-blue flex text-base hover:underline cursor-pointer">
+              <div className="text-blue flex items-center text-base hover:underline cursor-pointer">
                 <span className="mr-2">Explore our solution</span>
                 <FontAwesomeIcon
                   icon={faArrowRight}

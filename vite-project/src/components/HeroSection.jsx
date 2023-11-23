@@ -22,7 +22,7 @@ const HeroSection = () => {
   }
 
   return (
-    <div id="about-us" className="">
+    <div>
       <div className="grid md:grid-cols-2 grid-cols-1 place-items-center gap-8 bg-white p-8">
         <div className="flex flex-col">
           <div className="text-4xl font-semibold mb-8">

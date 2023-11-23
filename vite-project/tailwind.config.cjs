@@ -13,7 +13,7 @@ module.exports = {
         signInBG : "#F6F6F6"
       },
       backgroundImage: {
-        'contact': "url('../contact.jpg')",
+        'contact': "url('../public/assets/contact.jpg')",
       },
     },
   },

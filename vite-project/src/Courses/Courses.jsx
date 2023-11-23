@@ -16,36 +16,38 @@ import { useEffect, useState } from "react";
 function Courses({ menu, setMenu }) {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isPhone = useMediaQuery({ query: "(max-width: 768px)" });
-  const [smallerScreen, setSmallerScreen] = useState(false);
-  const [initialCards,setInitialCards] = useState(3)
-  const [smallestScreen, setSmallestScreen] = useState(false);
-  useEffect(() => {
-    if (isTablet) setSmallerScreen(true);
-    if (isPhone) setSmallestScreen(true);
-  }, [isTablet, isPhone]);
-  useEffect(() => {
-    if (smallerScreen) setInitialCards(2);
-    if (smallestScreen) setInitialCards(1);   
-    console.log(smallerScreen, smallestScreen);
-  },[smallerScreen,smallestScreen])
+
+  const getInitialCards = () => {
+    if (isPhone) return 1;
+    if (isTablet) return 2;
+    return 3;
+  };
+
+  const [initialCards, setInitialCards] = useState(getInitialCards());
   const [startIndex, setStartIndex] = useState(0);
-  const [currentId, setCurrentId] = useState(2);
+  const [currentId, setCurrentId] = useState(initialCards - 1);
+
   useEffect(() => {
-    if (currentId - startIndex > 2) {
+    setInitialCards(getInitialCards());
+  }, [isPhone, isTablet]);
+
+  useEffect(() => {
+    if (currentId - startIndex > initialCards - 1) {
       setStartIndex((prevInd) => prevInd + 1);
     }
 
-    if (currentId - startIndex < 2 && startIndex > 0) {
+    if (currentId - startIndex < initialCards - 1 && startIndex > 0) {
       setStartIndex((prevId) => prevId - 1);
     }
 
     if (currentId > 7) {
       setStartIndex(0);
-      setCurrentId(2);
+      setCurrentId(initialCards - 1);
     }
-  }, [currentId, startIndex]);
+  }, [currentId, startIndex, initialCards]);
+
   const handlePrevious = () => {
-    if (currentId - startIndex == 2) {
+    if (currentId - startIndex === initialCards - 1) {
       setCurrentId((prevId) => prevId - 1);
     }
   };
@@ -103,6 +105,37 @@ function Courses({ menu, setMenu }) {
               such as business, technology, creative writing, or personal
               development.
             </div>
+
+            <label for="courseCategory" className="text-gray-800 text-2xl">Select a course category:</label>
+
+            <select id="courseCategory" name="courseCategory">
+              <option value="ProgrammingLanguages">
+                Programming Languages
+              </option>
+              <option value="WebDevelopment">Web Development</option>
+              <option value="DataScience">Data Science</option>
+              <option value="ComputerNetworking">Computer Networking</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="SoftwareEngineering">Software Engineering</option>
+              <option value="ArtificialIntelligence">
+                Artificial Intelligence and Machine Learning
+              </option>
+              <option value="MobileAppDevelopment">
+                Mobile App Development
+              </option>
+              <option value="ComputerGraphics">Computer Graphics</option>
+              <option value="AlgorithmsDataStructures">
+                Algorithms and Data Structures
+              </option>
+              <option value="DatabaseManagement">Database Management</option>
+              <option value="OperatingSystems">Operating Systems</option>
+              <option value="CloudComputing">Cloud Computing</option>
+              <option value="IoT">Internet of Things (IoT)</option>
+              <option value="EthicalHacking">
+                Ethical Hacking and Penetration Testing
+              </option>
+            </select>
+
             <div className="flex justify-evenly items-center">
               <FontAwesomeIcon
                 icon={faArrowCircleLeft}
@@ -110,7 +143,11 @@ function Courses({ menu, setMenu }) {
                 onClick={handlePrevious}
               />
               <div className="m-6">
-                <CourseSection startIndex={startIndex} currentId={currentId} initialCards={initialCards}/>
+                <CourseSection
+                  startIndex={startIndex}
+                  currentId={currentId}
+                  initialCards={initialCards}
+                />
               </div>
               <FontAwesomeIcon
                 icon={faArrowCircleRight}
