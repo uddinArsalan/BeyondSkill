@@ -14,8 +14,8 @@ const Menu = () => {
   // };
 
   return (
-    <div className="bg-bodyBg flex flex-col justify-between h-screen xl:hidden p-8">
-      <div className="flex flex-col h-screen">
+    <div className="bg-bodyBg flex flex-col justify-between xl:hidden p-8">
+      <div className="flex flex-col">
         <Link to="/">
           <div className="flex justify-between p-6 items-center hover:text-blue cursor-pointer">
             <span className="text-xl font-semibold">Home</span>

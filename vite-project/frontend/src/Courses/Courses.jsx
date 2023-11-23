@@ -63,7 +63,7 @@ function Courses({ menu, setMenu }) {
             <div className="md:block w-full flex items-center justify-center">
               <img src={course} alt="" className="md:w-96 w-4/5" />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-full">
               <div className="text-2xl font-semibold">
                 Take Your Skills to the Next Level with Beyond Skill Courses...
               </div>
@@ -106,7 +106,7 @@ function Courses({ menu, setMenu }) {
               development.
             </div>
 
-            <label for="courseCategory" className="text-gray-800 text-2xl">Select a course category:</label>
+            <label htmlFor="courseCategory" className="text-gray-800 text-2xl">Select a course category:</label>
 
             <select id="courseCategory" name="courseCategory">
               <option value="ProgrammingLanguages">

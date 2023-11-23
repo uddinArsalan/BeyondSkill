@@ -40,20 +40,20 @@ const MainSection = () => {
             resources to help learners succeed in their personal and
             professional endeavors.
           </div>
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center md:gap-6 gap-4">
             <div
-              className="bg-blue text-white flex items-center md:p-4 p-3 w-fit rounded-md cursor-pointer"
+              className="bg-blue text-white flex items-center md:text-base text-sm p-4 w-fit rounded-md cursor-pointer"
               onClick={generatePDF}
             >
-              <span className="mr-2">Download report </span>
+              <span className="mr-1 md:mr-2">Download report </span>
               <FontAwesomeIcon
                 icon={faArrowRight}
                 className="md:text-base text-xs"
               />
             </div>
             <Link to="course">
-              <div className="text-blue flex items-center text-base hover:underline cursor-pointer">
-                <span className="mr-2">Explore our solution</span>
+              <div className="text-blue flex items-center text-sm md:text-base hover:underline cursor-pointer">
+                <span className="mr-1 md:mr-2">Explore our solution</span>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   className="md:text-base text-xs"

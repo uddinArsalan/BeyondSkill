@@ -71,6 +71,7 @@ const CoursesData = [
         value : 4.03,
         description : "Learn the skills to build and deploy professional websites and web applications with our comprehensive web development course."
     },
+
 ]
 
 export default CoursesData

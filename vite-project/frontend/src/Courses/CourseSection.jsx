@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useMediaQuery } from "react-responsive";
 import CoursesData from "./CoursesData";
+import Checkout from "../components/Checkout";
 
-const CourseSection = ({ startIndex, currentId,initialCards }) => {
+const CourseSection = ({ startIndex, currentId, initialCards }) => {
   const isTablet = useMediaQuery({ query: "(min-width: 1024px)" });
   const isPhone = useMediaQuery({ query: "min-width : 768px" });
   let visibleCourses = CoursesData.slice(startIndex, startIndex + initialCards);
@@ -23,17 +24,20 @@ const CourseSection = ({ startIndex, currentId,initialCards }) => {
           <div className="font-semibold text-lg mb-2">{title}</div>
           <img src={image} alt="" className="w-full h-48 object-cover mb-2" />
           <div className="text-sm text-gray-400 mb-1">{instructor}</div>
-          <div className="flex items-center text-sm text-gray-600">
-            <ReactStars
-              count={5}
-              onChange={ratingChanged}
-              size={18}
-              value={value}
-              activeColor="#ffd700"
-              isHalf={true}
-            />
-            <span className="ml-1">{value}</span>
-            <span className="ml-2 text-gray-400">256,923</span>
+          <div className="flex justify-between items-center text-sm text-gray-600">
+            <div>
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={18}
+                value={value}
+                activeColor="#ffd700"
+                isHalf={true}
+              />
+              <span className="ml-1">{value}</span>
+              <span className="ml-2 text-gray-400">256,923</span>
+            </div>
+            <Checkout />
           </div>
         </div>
       ))}
