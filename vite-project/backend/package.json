@@ -1,5 +1,5 @@
 {
-  "proxy": "<http://localhost:4242>",
+  "proxy": "https://beyondskill-stripe.onrender.com",
   "scripts": {
     "start": "nodemon server.cjs",
     "dev": "nodemon server.cjs"
