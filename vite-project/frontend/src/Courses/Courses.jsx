@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import course from "../assets/undraw_reminder_re_fe15.svg";
 import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 import CourseSection from "./CourseSection";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,6 +27,7 @@ function Courses({ menu, setMenu }) {
   const [initialCards, setInitialCards] = useState(getInitialCards());
   const [startIndex, setStartIndex] = useState(0);
   const [currentId, setCurrentId] = useState(initialCards - 1);
+  const [selectedCategory, setSelectedCategory] = useState("Development");
 
   useEffect(() => {
     setInitialCards(getInitialCards());
@@ -40,7 +42,7 @@ function Courses({ menu, setMenu }) {
       setStartIndex((prevId) => prevId - 1);
     }
 
-    if (currentId > 7) {
+    if (currentId > 11) {
       setStartIndex(0);
       setCurrentId(initialCards - 1);
     }
@@ -51,6 +53,12 @@ function Courses({ menu, setMenu }) {
       setCurrentId((prevId) => prevId - 1);
     }
   };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(encodeURIComponent(event.target.value));
+  };
+  
+  // console.log(selectedCategory)
 
   return (
     <div>
@@ -106,34 +114,34 @@ function Courses({ menu, setMenu }) {
               development.
             </div>
 
-            <label htmlFor="courseCategory" className="text-gray-800 text-2xl">Select a course category:</label>
+            <label htmlFor="courseCategory" className="text-gray-800 text-2xl">
+              Select a course category:
+            </label>
 
-            <select id="courseCategory" name="courseCategory">
-              <option value="ProgrammingLanguages">
-                Programming Languages
-              </option>
-              <option value="WebDevelopment">Web Development</option>
-              <option value="DataScience">Data Science</option>
-              <option value="ComputerNetworking">Computer Networking</option>
-              <option value="Cybersecurity">Cybersecurity</option>
-              <option value="SoftwareEngineering">Software Engineering</option>
-              <option value="ArtificialIntelligence">
+            <select
+              id="courseCategory"
+              name="courseCategory"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+              {/* <option value="">Choose Categorie</option> */}
+              <option value="Development">Development</option>
+              <option value="Design">Design</option>
+              <option value="Finance & Accounting">Finance & Accounting</option>
+              <option value="Business">Business</option>
+              <option value="Personal Development">Personal Development</option>
+              {/* <option value="artificialIntelligence">
                 Artificial Intelligence and Machine Learning
-              </option>
-              <option value="MobileAppDevelopment">
-                Mobile App Development
-              </option>
-              <option value="ComputerGraphics">Computer Graphics</option>
-              <option value="AlgorithmsDataStructures">
+              </option> */}
+              <option value="Marketing">Marketing</option>
+              <option value="IT & Software">IT & Software</option>
+              {/* <option value="algorithmsDataStructures">
                 Algorithms and Data Structures
-              </option>
-              <option value="DatabaseManagement">Database Management</option>
-              <option value="OperatingSystems">Operating Systems</option>
-              <option value="CloudComputing">Cloud Computing</option>
-              <option value="IoT">Internet of Things (IoT)</option>
-              <option value="EthicalHacking">
-                Ethical Hacking and Penetration Testing
-              </option>
+              </option> */}
+              <option value="Photography & Video">Photography & Video</option>
+              <option value="Music">Music</option>
+              <option value="Health & Fitness">Health & Fitness</option>
+              <option value="Lifestyle">Lifestyle</option>
             </select>
 
             <div className="flex justify-evenly items-center">
@@ -142,12 +150,23 @@ function Courses({ menu, setMenu }) {
                 className="text-3xl cursor-pointer"
                 onClick={handlePrevious}
               />
-              <div className="m-6">
+              <div className="m-6 flex flex-col gap-8">
                 <CourseSection
                   startIndex={startIndex}
                   currentId={currentId}
                   initialCards={initialCards}
+                  category={selectedCategory}
                 />
+                {/* <CourseSection
+                  startIndex={startIndex}
+                  currentId={currentId}
+                  initialCards={initialCards}
+                />
+                <CourseSection
+                  startIndex={startIndex}
+                  currentId={currentId}
+                  initialCards={initialCards}
+                /> */}
               </div>
               <FontAwesomeIcon
                 icon={faArrowCircleRight}
@@ -158,6 +177,7 @@ function Courses({ menu, setMenu }) {
           </div>
         </>
       )}
+      <Footer />
     </div>
   );
 }
