@@ -32,7 +32,7 @@ const CourseSection = ({ startIndex, currentId,category, initialCards }) => {
         <div className={`p-4 rounded-md border border-gray-200`} key={id}>
           <div className="text-gray-500 text-xs font-bold mb-2">{id}</div>
           <div className="font-semibold text-lg mb-2">{title}</div>
-          <img src={image_240x135} alt="" className="w-full h-48 object-cover mb-2" />
+          <img src={image_240x135} alt="" className="w-full h-48 object-contain mb-2" />
           <div className="text-sm text-gray-400 mb-1">{visible_instructors.display_name}</div>
           <div className="flex justify-between items-center text-sm text-gray-600">
             <div>
