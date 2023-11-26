@@ -150,7 +150,7 @@ function Courses({ menu, setMenu }) {
                 className="text-3xl cursor-pointer"
                 onClick={handlePrevious}
               />
-              <div className="m-6 flex flex-col gap-8">
+              <div className="m-2 md:m-6 flex flex-col gap-8">
                 <CourseSection
                   startIndex={startIndex}
                   currentId={currentId}
