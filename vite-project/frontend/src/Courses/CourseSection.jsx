@@ -7,7 +7,7 @@ import Checkout from "../components/Checkout";
 const CourseSection = ({ startIndex, currentId,category, initialCards }) => {
   const [ coursesData,setCoursesData ]= useState([])
   useEffect(() => {
-    fetch(`http://localhost:3000/udemy-courses/${encodeURIComponent(category)}`)
+    fetch(`https://beyondskill-proxy.onrender.com/udemy-courses/${encodeURIComponent(category)}`)
       .then((response) => response.json())
         .then((data) => setCoursesData(data))
 
