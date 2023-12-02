@@ -4,20 +4,55 @@ import { useMediaQuery } from "react-responsive";
 // import CoursesData from "./CoursesData";
 import Checkout from "../components/Checkout";
 
-const CourseSection = ({ startIndex, currentId,category, initialCards }) => {
-  const [ coursesData,setCoursesData ]= useState([])
+const renderSkeleton = ({ initialCards }) => {
+  const skeletons = Array.from({ length: initialCards }).map((_, index) => (
+    <div
+      key={index}
+      className="bg-gray-800 animate-pulse p-4 rounded-md border"
+    >
+      <div className="bg-gray-700 p-2 w-24 rounded-md mb-2"></div>
+      <div className="flex flex-col gap-2">
+        <div className="bg-gray-700 p-2 w-full rounded-md"></div>
+        <div className="bg-gray-700 p-2 w-full rounded-md"></div>
+        <div className="bg-gray-700 p-2 w-full rounded-md"></div>
+      </div>
+      <div className="w-full h-48 object-cover mb-2"></div>
+      <div className="bg-gray-700 mb-1 p-2 w-36"></div>
+      <div className="flex justify-between items-center">
+        <div>
+          <div className="bg-gray-700 w-24"></div>
+          <span className="ml-1 bg-gray-700 w-4">4.8</span>
+          <span className="ml-2 bg-gray-700 w-6">256,923</span>
+        </div>
+        <div className="bg-gray-700 p-1"></div>
+      </div>
+    </div>
+  ));
+  return skeletons;
+};
+
+const CourseSection = ({ startIndex, currentId, category, initialCards }) => {
+  const [coursesData, setCoursesData] = useState([]);
+  const [loading,setLoading] = useState(true)
   useEffect(() => {
-    fetch(`https://beyondskill-proxy.onrender.com/udemy-courses/${encodeURIComponent(category)}`)
+    fetch(
+      `https://beyondskill-proxy.onrender.com/udemy-courses/${encodeURIComponent(
+        category
+      )}`
+    )
       .then((response) => response.json())
-        .then((data) => setCoursesData(data))
+      .then((data) => {
+        setCoursesData(data)
+        setLoading(false)
+      });
 
-        // if(coursesData){
-        //   console.log(coursesData[0].avg_rating)
-        // }
-  },[category])
+    // if(coursesData){
+    //   console.log(coursesData[0].avg_rating)
+    // }
+  }, [category]);
 
-  const isTablet = useMediaQuery({ query: "(min-width: 1024px)" });
-  const isPhone = useMediaQuery({ query: "min-width : 768px" });
+  // const isTablet = useMediaQuery({ query: "(min-width: 1024px)" });
+  // const isPhone = useMediaQuery({ query: "min-width : 768px" });
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -26,31 +61,42 @@ const CourseSection = ({ startIndex, currentId,category, initialCards }) => {
   // console.log("isPhone " + isPhone)
   // console.log(isPhone);
   //${currentId == id ? "lg:scale-110 " : ""}
+  console.log(loading)
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-      {coursesData.slice(startIndex, startIndex + initialCards).map(({ id, image_240x135, title, visible_instructors }) => (
-        <div className={`p-4 rounded-md border border-gray-200`} key={id}>
-          <div className="text-gray-500 text-xs font-bold mb-2">{id}</div>
-          <div className="font-semibold text-lg mb-2">{title}</div>
-          <img src={image_240x135} alt="" className="w-full h-48 object-contain mb-2" />
-          <div className="text-sm text-gray-400 mb-1">{visible_instructors.display_name}</div>
-          <div className="flex justify-between items-center text-sm text-gray-600">
-            <div>
-              <ReactStars
-                count={5}
-                onChange={ratingChanged}
-                size={18}
-                value={4.98}
-                activeColor="#ffd700"
-                isHalf={true}
-              />
-              <span className="ml-1">4.8</span>
-              <span className="ml-2 text-gray-400">256,923</span>
-            </div>
-            <Checkout imageUrl={image_240x135} id={id} title={title}/>
-          </div>
-        </div>
-      ))}
+      {!loading
+        ? coursesData
+            .slice(startIndex, startIndex + initialCards)
+            .map(({ id, image_240x135, title, visible_instructors }) => (
+              <div className={`p-4 rounded-md border border-gray-200`} key={id}>
+                <div className="text-gray-500 text-xs font-bold mb-2">{id}</div>
+                <div className="font-semibold text-lg mb-2">{title}</div>
+                <img
+                  src={image_240x135}
+                  alt=""
+                  className="w-full h-48 object-cover mb-2"
+                />
+                <div className="text-sm text-gray-400 mb-1">
+                  {visible_instructors[0].display_name}
+                </div>
+                <div className="flex justify-between items-center text-sm text-gray-600">
+                  <div>
+                    <ReactStars
+                      count={5}
+                      onChange={ratingChanged}
+                      size={18}
+                      value={4.98}
+                      activeColor="#ffd700"
+                      isHalf={true}
+                    />
+                    <span className="ml-1">4.8</span>
+                    <span className="ml-2 text-gray-400">256,923</span>
+                  </div>
+                  <Checkout imageUrl={image_240x135} id={id} title={title} />
+                </div>
+              </div>
+            ))
+        : renderSkeleton(initialCards)}
     </div>
   );
 };
