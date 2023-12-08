@@ -106,14 +106,17 @@ function Courses({ menu, setMenu }) {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-8 justify-center items-center m-6 ">
+          <div className="flex flex-col gap-4 m-6n">
+            <div className="flex flex-col items-center gap-8">
             <div className="text-5xl font-bold">Our Courses</div>
-            <div className="font-semibold text-gray-600 text-center">
+            <div className="font-semibold text-gray-600 text-center w-3/4">
               A list of the different types of courses that Beyondskill offers,
               such as business, technology, creative writing, or personal
               development.
             </div>
+            </div>
 
+          <div className="flex items-center flex-col gap-4">
             <label htmlFor="courseCategory" className="text-gray-800 text-2xl">
               Select a course category:
             </label>
@@ -123,6 +126,7 @@ function Courses({ menu, setMenu }) {
               name="courseCategory"
               value={selectedCategory}
               onChange={handleCategoryChange}
+              className=""
             >
               {/* <option value="">Choose Categorie</option> */}
               <option value="Development">Development</option>
@@ -143,14 +147,15 @@ function Courses({ menu, setMenu }) {
               <option value="Health & Fitness">Health & Fitness</option>
               <option value="Lifestyle">Lifestyle</option>
             </select>
+          </div>
 
-            <div className="flex justify-evenly items-center">
+            <div className="flex items-center p-6 gap-3">
               <FontAwesomeIcon
                 icon={faArrowCircleLeft}
                 className="text-3xl cursor-pointer"
                 onClick={handlePrevious}
               />
-              <div className="m-2 md:m-6 flex flex-col gap-8">
+              <div className="m-2 md:m-6 flex flex-col w-full">
                 <CourseSection
                   startIndex={startIndex}
                   currentId={currentId}
